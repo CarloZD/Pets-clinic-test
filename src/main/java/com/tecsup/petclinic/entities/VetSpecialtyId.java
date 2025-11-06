@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Composite key for VetSpecialty entity
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

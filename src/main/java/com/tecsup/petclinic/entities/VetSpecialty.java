@@ -8,10 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-/**
- * Entity for vet_specialties table
- * Many-to-many relationship between vets and specialties
- */
+
 @Entity
 @Table(name = "vet_specialties")
 @IdClass(VetSpecialtyId.class)
