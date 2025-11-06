@@ -2,7 +2,6 @@ package com.tecsup.petclinic.mappers;
 
 import com.tecsup.petclinic.dtos.VetSpecialtyDTO;
 import com.tecsup.petclinic.entities.VetSpecialty;
-import com.tecsup.petclinic.entities.VetSpecialtyId;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,8 +13,7 @@ public class VetSpecialtyMapper {
      * @return
      */
     public VetSpecialty mapToEntity(VetSpecialtyDTO dto) {
-        if (dto == null)
-            return null;
+        if (dto == null) return null;
         return new VetSpecialty(
                 dto.getVetId(),
                 dto.getSpecialtyId(),
@@ -25,13 +23,13 @@ public class VetSpecialtyMapper {
                 dto.getNotes()
         );
     }
+
     /**
      * Convert Entity to DTO
      * @param entity
      * @return
      */
-
-    public VetSpecialtyDTO mapToDTO(VetSpecialty entity) {
+    public VetSpecialtyDTO mapToDto(VetSpecialty entity) {
         if (entity == null) return null;
         return new VetSpecialtyDTO(
                 entity.getVetId(),
@@ -42,5 +40,4 @@ public class VetSpecialtyMapper {
                 entity.getNotes()
         );
     }
-
 }
