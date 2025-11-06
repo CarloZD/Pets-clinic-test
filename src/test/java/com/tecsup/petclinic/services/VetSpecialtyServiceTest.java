@@ -76,4 +76,49 @@ public class VetSpecialtyServiceTest {
         assertEquals(NOTES, newVetSpecialty.getNotes());
     }
 
+    /**
+     * Test: Update an existing vet-specialty relationship
+     */
+    @Test
+    public void testUpdateVetSpecialty_RuizCarlos() {
+        Integer VET_ID = 5; // Henry Stevens
+        Integer SPECIALTY_ID = 1; // Radiology
+
+        // Original values
+        Integer ORIGINAL_YEARS_EXPERIENCE = 7;
+
+        // Updated values
+        Integer UPDATED_YEARS_EXPERIENCE = 10;
+        String UPDATED_NOTES = "Now expert in advanced imaging techniques";
+
+        VetSpecialtyDTO vetSpecialtyDTO = null;
+
+        // Find existing relationship
+        try {
+            vetSpecialtyDTO = this.vetSpecialtyService.findById(VET_ID, SPECIALTY_ID);
+        } catch (VetSpecialtyNotFoundException e) {
+            fail(e.getMessage());
+        }
+
+        log.info("Original VetSpecialty: " + vetSpecialtyDTO);
+
+        // Update values
+        vetSpecialtyDTO.setYearsExperience(UPDATED_YEARS_EXPERIENCE);
+        vetSpecialtyDTO.setNotes(UPDATED_NOTES);
+
+        // Execute update
+        VetSpecialtyDTO updatedVetSpecialty = this.vetSpecialtyService.update(vetSpecialtyDTO);
+
+        log.info("Updated VetSpecialty: " + updatedVetSpecialty);
+
+        assertNotNull(updatedVetSpecialty);
+        assertEquals(VET_ID, updatedVetSpecialty.getVetId());
+        assertEquals(SPECIALTY_ID, updatedVetSpecialty.getSpecialtyId());
+        assertEquals(UPDATED_YEARS_EXPERIENCE, updatedVetSpecialty.getYearsExperience());
+        assertEquals(UPDATED_NOTES, updatedVetSpecialty.getNotes());
+    }
+
+
+
+
 }
